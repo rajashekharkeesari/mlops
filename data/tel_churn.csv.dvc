@@ -1,0 +1,5 @@
+outs:
+- md5: 0a6be42efc17e2112b76350bd1db7734
+  size: 2029448
+  hash: md5
+  path: tel_churn.csv
