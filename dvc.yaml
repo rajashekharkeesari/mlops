@@ -27,7 +27,7 @@ stages:
       - model/model_dt.pkl
       - src/evalution.py
     outs:
-      - metrics.json  # optional, if you want to save evaluation results
+      - metrics.json
 
   run_pipeline:
     cmd: python src/main.py
