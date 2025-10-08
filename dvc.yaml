@@ -1,0 +1,37 @@
+stages:
+  preprocessing:
+    cmd: python src/preprocessing.py
+    deps:
+    - data/tel_churn.csv
+    - src/preprocessing.py
+    outs:
+    - data/processed/x_train.csv
+    - data/processed/x_test.csv
+    - data/processed/y_train.csv
+    - data/processed/y_test.csv
+  model:
+    cmd: python src/model.py
+    deps:
+    - data/processed/x_train.csv
+    - data/processed/y_train.csv
+    - src/model.py
+    outs:
+    - model/model_dt.pkl
+  evaluation:
+    cmd: python src/evalution.py
+    deps:
+    - data/processed/x_test.csv
+    - data/processed/y_test.csv
+    - model/model_dt.pkl
+    - src/evalution.py
+    outs:
+    - metrics.json
+  run_pipeline:
+    cmd: python src/main.py
+    deps:
+    - data/processed
+    - model/model_dt.pkl
+    - src/evaluate.py
+    - src/main.py
+    - src/model.py
+    - src/preprocess.py
