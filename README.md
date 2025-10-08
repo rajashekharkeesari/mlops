@@ -1,81 +1,69 @@
-# Customer Retention
+Telco Customer Churn Analysis - Exploratory Data Analysis (EDA)
+Overview
+This Jupyter Notebook contains an exploratory data analysis (EDA) of the Telco Customer Churn dataset. The dataset includes information about telecom customers and whether they churned (left the service) in the last month. The goal of this analysis is to understand the factors contributing to customer churn and identify patterns that can help predict and reduce churn rates.
 
-## 🔴 Detailed Session on EDA:
+Dataset Information
+Dataset Name: WA_Fn-UseC_-Telco-Customer-Churn.csv
 
-[![Alt text](https://user-images.githubusercontent.com/34673684/117579611-49cd5880-b126-11eb-9e2b-ef865c090808.png)](https://www.youtube.com/watch?v=baL7OrGWlxs)
+Rows: 7043
 
-## 🔴 One of my previous Sessions on EDA, Model Building & Model Deployment: 
+Columns: 21
 
-[![Alt text](https://raw.githubusercontent.com/pik1989/MLProject-Churn-Analysis-And-Prediction-Model/main/images/CC.JPG)](https://www.youtube.com/watch?v=GVECbcKUio4)
+Target Variable: Churn (Yes/No)
 
-## 🔴 What is Customer Churning ?
+Key Features
+Customer Demographics: gender, SeniorCitizen, Partner, Dependents
 
-![Customer Retention](https://raw.githubusercontent.com/pik1989/MLProject-Churn-Analysis-And-Prediction-Model/main/images/Telco1.JPG)
+Account Information: tenure, Contract, PaperlessBilling, PaymentMethod
 
-## 🔴 What are the different Churn Scenarios ?
+Services: PhoneService, MultipleLines, InternetService, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport, StreamingTV, StreamingMovies
 
-![Churn Scenarios](https://raw.githubusercontent.com/pik1989/MLProject-Churn-Analysis-And-Prediction-Model/main/images/Telco2.JPG)
+Charges: MonthlyCharges, TotalCharges
 
-## 🔴 Decision Cycle of a Subscriber ?
+Analysis Steps
+Data Loading and Initial Inspection
 
-![Decision Cycle](https://raw.githubusercontent.com/pik1989/MLProject-Churn-Analysis-And-Prediction-Model/main/images/Telco3.JPG)
+Load the dataset and inspect the first few rows.
 
-## 🔴 What are the different Churn Segments ?
+Check data types and descriptive statistics.
 
-![Churn Segments](https://raw.githubusercontent.com/pik1989/MLProject-Churn-Analysis-And-Prediction-Model/main/images/Telco4.JPG)
+Data Cleaning
 
-## 🔴 Solution Overview
+Handle missing values (TotalCharges column).
 
-![Solution](https://raw.githubusercontent.com/pik1989/MLProject-Churn-Analysis-And-Prediction-Model/main/images/Telco5.JPG)
+Create tenure groups for easier analysis.
 
+Remove unnecessary columns (customerID, tenure).
 
-In this repository, we have performed the end to end Exploratory Data Analysis, and idenfitied the characteristics of the customers that are more likely to churn, and I have used them wisely to create a model, and lately, have deployed the model.
+Exploratory Data Analysis
 
-### 🟢 For EDA, please refer to : Churn Analysis - EDA.ipynb
-### 🟢 For Model Building, please refer to: Churn Analysis - Model Building.ipynb
-### 🟢 For Model Deployment, please refer to app.py
+Visualize the distribution of the target variable (Churn).
 
+Analyze the relationship between customer attributes and churn.
 
-### 🔵 Creating the flask API
+Examine numerical features (MonthlyCharges, TotalCharges) and categorical features (Contract, PaymentMethod, etc.).
 
-```
-app = Flask("__name__")
-```
+Key Insights
 
-The loadPage method calls our home.html.
-```
-@app.route("/")
-def loadPage():
-	return render_template('home.html', query="")
-```
+The dataset is imbalanced with 73.5% of customers not churning and 26.5% churning.
 
-The predict method is our POST method, which is basically called when we pass all the inputs from our front end and click SUBMIT.
-```
-@app.route("/", methods=['POST'])
-def predict():
-```
-  
-The run() method of Flask class runs the application on the local development server.
-```
-app.run()
-```
+TotalCharges had 11 missing values, which were dropped due to their minimal impact.
 
+Tenure was grouped into bins (e.g., 1-12 months, 13-24 months) for better analysis.
 
-Yay, our model is ready, let’s test our bot.
-The above given Python script is executed from Python shell.
+Dependencies
+Python 3.x
 
-Go to Anaconda Prompt, and run the below query.
-```
-python app.py
-```
+Libraries: pandas, numpy, seaborn, matplotlib
 
+How to Run
+Ensure the dataset file (WA_Fn-UseC_-Telco-Customer-Churn.csv) is in the same directory as the notebook.
 
-Below message in Python shell is seen, which indicates that our App is now hosted at http://127.0.0.1:5000/ or localhost:5000
-```
-* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-```
+Install required libraries using pip install pandas numpy seaborn matplotlib.
 
+Open and run the Jupyter Notebook (Churn Analysis - EDA.ipynb).
 
-HERE'S HOW OUR FRONTEND LOOKS LIKE:
+Results
+The EDA highlights key factors influencing churn, such as tenure, contract type, and service usage.
 
-![Customer Retention](https://raw.githubusercontent.com/pik1989/MLProject-Churn-Analysis-And-Prediction-Model/main/images/Telco6.JPG)
+Visualizations provide clear insights into customer behavior patterns.

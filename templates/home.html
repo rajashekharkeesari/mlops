@@ -1,106 +1,173 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Churn Prediction</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-   <body>
-      <title>Churn Prediction</title>
-	  <div class="container">
-		<div class="row">
 
-		  <form action="http://localhost:5000/" method="POST">
-		  	<div class="col-sm-9">
-			 <div class="form-group  purple-border">
-				  <label for="comment">SeniorCitizen:</label>
-				  <textarea class="form-control" rows="2" id="query1" name="query1" rows="2" cols="5" autofocus>{{query1}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">MonthlyCharges:</label>
-				  <textarea class="form-control" rows="2" id="query2" name="query2" rows="2" cols="5" autofocus>{{query2}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">TotalCharges:</label>
-				  <textarea class="form-control" rows="2" id="query3" name="query3" rows="2" cols="5" autofocus>{{query3}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">gender:</label>
-				  <textarea class="form-control" rows="2" id="query4" name="query4" rows="2" cols="5" autofocus>{{query4}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Partner:</label>
-				  <textarea class="form-control" rows="2" id="query5" name="query5" rows="2" cols="5" autofocus>{{query5}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Dependents:</label>
-				  <textarea class="form-control" rows="2" id="query6" name="query6" rows="2" cols="5" autofocus>{{query6}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">PhoneService:</label>
-				  <textarea class="form-control" rows="2" id="query7" name="query7" rows="2" cols="5" autofocus>{{query7}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">MultipleLines:</label>
-				  <textarea class="form-control" rows="2" id="query8" name="query8" rows="2" cols="5" autofocus>{{query8}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">InternetService:</label>
-				  <textarea class="form-control" rows="2" id="query9" name="query9" rows="2" cols="5" autofocus>{{query9}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">OnlineSecurity:</label>
-				  <textarea class="form-control" rows="2" id="query10" name="query10" rows="2" cols="5" autofocus>{{query10}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">OnlineBackup:</label>
-				  <textarea class="form-control" rows="2" id="query11" name="query11" rows="2" cols="5" autofocus>{{query11}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">DeviceProtection:</label>
-				  <textarea class="form-control" rows="2" id="query12" name="query12" rows="2" cols="5" autofocus>{{query12}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">TechSupport:</label>
-				  <textarea class="form-control" rows="2" id="query13" name="query13" rows="2" cols="5" autofocus>{{query13}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">StreamingTV:</label>
-				  <textarea class="form-control" rows="2" id="query14" name="query14" rows="2" cols="5" autofocus>{{query14}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">StreamingMovies:</label>
-				  <textarea class="form-control" rows="2" id="query15" name="query15" rows="2" cols="5" autofocus>{{query15}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Contract:</label>
-				  <textarea class="form-control" rows="2" id="query16" name="query16" rows="2" cols="5" autofocus>{{query16}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">PaperlessBilling:</label>
-				  <textarea class="form-control" rows="2" id="query17" name="query17" rows="2" cols="5" autofocus>{{query17}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">PaymentMethod:</label>
-				  <textarea class="form-control" rows="2" id="query18" name="query18" rows="2" cols="5" autofocus>{{query18}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">tenure:</label>
-				  <textarea class="form-control" rows="2" id="query19" name="query19" rows="2" cols="5" autofocus>{{query19}}</textarea>
-			</div>
-			</div>
-			<div class="col-sm-3">
-			<button type="submit" class="btn btn-primary" name="submit">SUBMIT</button>
-			</div>
-		  </form>
-		  </div>
-		  
-		<div class="row"> 
-			<div class="col-sm-9">
-			<textarea class="form-control" rows="2" id="comment" name="query6" rows="2" cols="5" autofocus>{{output1}}</textarea>
-			<textarea class="form-control" rows="2" id="comment" name="query7" rows="2" cols="5" autofocus>{{output2}}</textarea>
-			</div>
-		</div>
-	</div>		
-   </body>
+  <style>
+    body {
+      background-color: #f7f9fc;
+      color: #333;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card-header {
+      background-color: #007bff;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+    .form-group label {
+      font-weight: 600;
+    }
+    .form-control {
+      border-radius: .375rem;
+      padding: .75rem;
+    }
+    .form-control:focus {
+      box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
+    }
+    .btn-submit {
+      margin-top: 20px;
+      padding: .75rem 1.5rem;
+      font-size: 1.1rem;
+    }
+    .alert {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card mb-4">
+      <div class="card-header">Churn Prediction Input</div>
+      <div class="card-body">
+        <form action="/" method="POST">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="query1">Senior Citizen (0 or 1)</label>
+              <input type="text" class="form-control" id="query1" name="query1" value="{{ query1 }}" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="query2">Monthly Charges</label>
+              <input type="number" step="0.01" class="form-control" id="query2" name="query2" value="{{ query2 }}" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="query3">Total Charges</label>
+              <input type="number" step="0.01" class="form-control" id="query3" name="query3" value="{{ query3 }}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="query4">Gender (Male/Female)</label>
+              <input type="text" class="form-control" id="query4" name="query4" value="{{ query4 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query5">Partner (Yes/No)</label>
+              <input type="text" class="form-control" id="query5" name="query5" value="{{ query5 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query6">Dependents (Yes/No)</label>
+              <input type="text" class="form-control" id="query6" name="query6" value="{{ query6 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query7">Phone Service (Yes/No)</label>
+              <input type="text" class="form-control" id="query7" name="query7" value="{{ query7 }}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="query8">Multiple Lines (Yes/No/No phone service)</label>
+              <input type="text" class="form-control" id="query8" name="query8" value="{{ query8 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query9">Internet Service (DSL/Fiber optic/No)</label>
+              <input type="text" class="form-control" id="query9" name="query9" value="{{ query9 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query10">Online Security (Yes/No/No internet service)</label>
+              <input type="text" class="form-control" id="query10" name="query10" value="{{ query10 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query11">Online Backup (Yes/No/No internet service)</label>
+              <input type="text" class="form-control" id="query11" name="query11" value="{{ query11 }}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <label for="query12">Device Protection (Yes/No/No internet service)</label>
+              <input type="text" class="form-control" id="query12" name="query12" value="{{ query12 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query13">Tech Support (Yes/No/No internet service)</label>
+              <input type="text" class="form-control" id="query13" name="query13" value="{{ query13 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query14">Streaming TV (Yes/No/No internet service)</label>
+              <input type="text" class="form-control" id="query14" name="query14" value="{{ query14 }}" required>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="query15">Streaming Movies (Yes/No/No internet service)</label>
+              <input type="text" class="form-control" id="query15" name="query15" value="{{ query15 }}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="query16">Contract (Month-to-month/One year/Two year)</label>
+              <input type="text" class="form-control" id="query16" name="query16" value="{{ query16 }}" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="query17">Paperless Billing (Yes/No)</label>
+              <input type="text" class="form-control" id="query17" name="query17" value="{{ query17 }}" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="query18">Payment Method (Electronic check/Mailed check/Bank transfer/Credit card)</label>
+              <input type="text" class="form-control" id="query18" name="query18" value="{{ query18 }}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="query19">Tenure (months)</label>
+              <input type="number" class="form-control" id="query19" name="query19" value="{{ query19 }}" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-12 col-md-3">
+              <button type="submit" class="btn btn-primary btn-block btn-submit" name="submit">
+                SUBMIT
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Prediction Results</div>
+      <div class="card-body">
+        {% if output1 %}
+        <div class="alert alert-info">{{ output1 }}</div>
+        <div class="alert alert-secondary">{{ output2 }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</body>
 </html>
