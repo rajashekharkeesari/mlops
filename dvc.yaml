@@ -23,7 +23,7 @@ stages:
     - model/model_dt.pkl
     - src/evalution.py
     outs:
-    - src/metrics.json
+    - metrics.json
   main:
     cmd: python src/main.py
     deps:
