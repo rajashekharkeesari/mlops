@@ -20,13 +20,10 @@ stages:
   evalution:
     cmd: python src/evalution.py
     deps:
-    - data/processed/x_test.csv
-    - data/processed/y_test.csv
     - model/model_dt.pkl
     - src/evalution.py
-    metrics:
-    - metrics.json:
-        cache: false
+    outs:
+    - src/metrics.json
   main:
     cmd: python src/main.py
     deps:
