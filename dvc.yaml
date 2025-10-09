@@ -2,39 +2,38 @@ stages:
   preprocessing:
     cmd: python src/preprocessing.py
     deps:
-      - data/tel_churn.csv
-      - src/preprocessing.py
+    - data/tel_churn.csv
+    - src/preprocessing.py
     outs:
-      - data/processed/x_train.csv
-      - data/processed/x_test.csv
-      - data/processed/y_train.csv
-      - data/processed/y_test.csv
-
+    - data/processed/x_test.csv
+    - data/processed/x_train.csv
+    - data/processed/y_test.csv
+    - data/processed/y_train.csv
   model:
     cmd: python src/model.py
     deps:
-      - data/processed/x_train.csv
-      - data/processed/y_train.csv
-      - src/model.py
+    - data/processed/x_train.csv
+    - data/processed/y_train.csv
+    - src/model.py
     outs:
-      - model/model_dt.pkl
-
-  evaluation:
+    - model/model_dt.pkl
+  evalution:
     cmd: python src/evalution.py
     deps:
-      - data/processed/x_test.csv
-      - data/processed/y_test.csv
-      - model/model_dt.pkl
-      - src/evalution.py
-    outs:
-      - metrics.json
-
-  run_pipeline:
+    - data/processed/x_test.csv
+    - data/processed/y_test.csv
+    - model/model_dt.pkl
+    - src/evalution.py
+    metrics:
+    - metrics.json:
+        cache: false
+  main:
     cmd: python src/main.py
     deps:
-      - data/processed
-      - model/model_dt.pkl
-      - src/preprocessing.py
-      - src/model.py
-      - src/evalution.py
-      - src/main.py
+    - data/processed/x_test.csv
+    - data/processed/x_train.csv
+    - data/processed/y_test.csv
+    - data/processed/y_train.csv
+    - data/tel_churn.csv
+    - model/model_dt.pkl
+    - src/main.py
