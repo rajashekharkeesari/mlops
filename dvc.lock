@@ -57,10 +57,41 @@ stages:
       size: 11977
     - path: src/evalution.py
       hash: md5
-      md5: d647655edc0523fe97f015958fa76b80
-      size: 672
+      md5: c828bcb69310eaea98fbd60be17df5d0
+      size: 804
     outs:
     - path: metrics.json
       hash: md5
       md5: e3ae47370dc4cf540b5dd6171ce017d5
       size: 19
+  main:
+    cmd: python src/main.py
+    deps:
+    - path: data/processed/x_test.csv
+      hash: md5
+      md5: 656a8a20089ca28ce74d06f9858ce77a
+      size: 397225
+    - path: data/processed/x_train.csv
+      hash: md5
+      md5: 1f6f8483f7f2fb5649eada6997fe1c53
+      size: 1585165
+    - path: data/processed/y_test.csv
+      hash: md5
+      md5: 70e36b3b0c610fa45307c555dfc0a0bb
+      size: 4228
+    - path: data/processed/y_train.csv
+      hash: md5
+      md5: 7fcf034e21fde0f6cd8455bfb32fd957
+      size: 16882
+    - path: data/tel_churn.csv
+      hash: md5
+      md5: 0a6be42efc17e2112b76350bd1db7734
+      size: 2029448
+    - path: model/model_dt.pkl
+      hash: md5
+      md5: 189c857f0529ed9d790b1e34dad9906a
+      size: 11817
+    - path: src/main.py
+      hash: md5
+      md5: 535241196ffb0cfcfaa9171a3c7d390a
+      size: 736
