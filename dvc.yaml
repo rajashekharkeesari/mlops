@@ -15,6 +15,9 @@ stages:
     - data/processed/x_train.csv
     - data/processed/y_train.csv
     - src/model.py
+    params:
+      - model.max_depth
+      - model.min_samples_leaf
     outs:
     - model/model_dt.pkl
   evalution:
