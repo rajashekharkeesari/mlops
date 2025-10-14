@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/61478a69825a41e09a6bfea1103c8581/artifacts
+end_time: 1760408045324
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 61478a69825a41e09a6bfea1103c8581
+run_name: suave-crane-546
+run_uuid: 61478a69825a41e09a6bfea1103c8581
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760408036849
+status: 3
+tags: []
+user_id: Rajashekhar
