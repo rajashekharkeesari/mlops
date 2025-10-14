@@ -41,8 +41,8 @@ stages:
       size: 16882
     - path: src/model.py
       hash: md5
-      md5: 21381e39e49b9afcb925abe625b00d52
-      size: 1199
+      md5: 8b92b13e27722efb2e2b251141062258
+      size: 1400
     params:
       params.yaml:
         model.max_depth: 9

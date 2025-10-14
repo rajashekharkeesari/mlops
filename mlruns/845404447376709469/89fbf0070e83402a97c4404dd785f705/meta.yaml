@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/845404447376709469/89fbf0070e83402a97c4404dd785f705/artifacts
+end_time: 1760408333643
+entry_point_name: ''
+experiment_id: '845404447376709469'
+lifecycle_stage: active
+run_id: 89fbf0070e83402a97c4404dd785f705
+run_name: suave-roo-498
+run_uuid: 89fbf0070e83402a97c4404dd785f705
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760408325309
+status: 3
+tags: []
+user_id: Rajashekhar
