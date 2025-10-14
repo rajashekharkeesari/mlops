@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/0a911366a6c647db850e5fd8a9dc4583/artifacts
+end_time: 1760408171080
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0a911366a6c647db850e5fd8a9dc4583
+run_name: flawless-cat-112
+run_uuid: 0a911366a6c647db850e5fd8a9dc4583
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760408162572
+status: 3
+tags: []
+user_id: Rajashekhar
