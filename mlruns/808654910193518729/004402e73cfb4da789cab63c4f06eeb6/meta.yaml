@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/808654910193518729/004402e73cfb4da789cab63c4f06eeb6/artifacts
+end_time: 1760408531445
+entry_point_name: ''
+experiment_id: '808654910193518729'
+lifecycle_stage: active
+run_id: 004402e73cfb4da789cab63c4f06eeb6
+run_name: funny-kit-495
+run_uuid: 004402e73cfb4da789cab63c4f06eeb6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760408519442
+status: 3
+tags: []
+user_id: Rajashekhar
