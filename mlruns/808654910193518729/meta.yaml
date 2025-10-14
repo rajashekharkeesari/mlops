@@ -1,0 +1,6 @@
+artifact_location: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/808654910193518729
+creation_time: 1760408445409
+experiment_id: '808654910193518729'
+last_update_time: 1760408445409
+lifecycle_stage: active
+name: churn_prediction_experiment
