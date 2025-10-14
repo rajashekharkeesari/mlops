@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/405779710183271152/aba8551e352e48dc80c72e8112c08f4c/artifacts
+end_time: 1760057471786
+entry_point_name: ''
+experiment_id: '405779710183271152'
+lifecycle_stage: active
+run_id: aba8551e352e48dc80c72e8112c08f4c
+run_name: likeable-midge-924
+run_uuid: aba8551e352e48dc80c72e8112c08f4c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760057455037
+status: 3
+tags: []
+user_id: Rajashekhar

@@ -45,20 +45,20 @@ stages:
       size: 1199
     params:
       params.yaml:
-        model.max_depth: 5
+        model.max_depth: 9
         model.min_samples_leaf: 1
     outs:
     - path: model/model_dt.pkl
       hash: md5
-      md5: 3bbfa99fdcfaa0ef44adaf48a248e0da
-      size: 7977
+      md5: bd39fb2014590d4b122df9a89d2c9e9a
+      size: 44457
   evalution:
     cmd: python src/evalution.py
     deps:
     - path: model/model_dt.pkl
       hash: md5
-      md5: 3bbfa99fdcfaa0ef44adaf48a248e0da
-      size: 7977
+      md5: bd39fb2014590d4b122df9a89d2c9e9a
+      size: 44457
     - path: src/evalution.py
       hash: md5
       md5: 34c565c3c46ec13ea77d926ed583f1eb
@@ -66,26 +66,26 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: 1af003567eb3ccfe82edbac79fc6ea42
+      md5: f70c9fb2d49a5d584d347eda7b5a5382
       size: 19
   main:
     cmd: python src/main.py
     deps:
     - path: data/processed/x_test.csv
       hash: md5
-      md5: 84d5fc36a3c131cd0cb17ef3477f9550
-      size: 397328
+      md5: 990f1e2ac076e74a24a40b0eb9566fdf
+      size: 397307
     - path: data/processed/x_train.csv
       hash: md5
-      md5: 9396a77704f7d9d3f51b892471dc814c
-      size: 1585062
+      md5: c6fa4826f56555e2229fe64c0984787b
+      size: 1585083
     - path: data/processed/y_test.csv
       hash: md5
-      md5: 81b31d82c9a210907dd971b768cd79f8
+      md5: 7c56b9f95b534c970feb53dd43298137
       size: 4228
     - path: data/processed/y_train.csv
       hash: md5
-      md5: 8d1d625675d80ed00137369b05d7501d
+      md5: eedd9d741bbb31d19e6224059e06e3ab
       size: 16882
     - path: data/tel_churn.csv
       hash: md5
@@ -93,9 +93,9 @@ stages:
       size: 2029448
     - path: model/model_dt.pkl
       hash: md5
-      md5: 6ea8b955fc0d8db34f36b099e3159869
-      size: 12137
+      md5: 1d46d4d551f8aeef98a554f050e828cd
+      size: 48617
     - path: src/main.py
       hash: md5
-      md5: 1e7a61e87a9114eb9af5d81fc1977618
-      size: 749
+      md5: 9d61c12473f37b186507741b6863abc1
+      size: 1352

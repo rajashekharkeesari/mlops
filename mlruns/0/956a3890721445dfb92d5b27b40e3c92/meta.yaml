@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/956a3890721445dfb92d5b27b40e3c92/artifacts
+end_time: 1760406708643
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 956a3890721445dfb92d5b27b40e3c92
+run_name: nosy-shad-991
+run_uuid: 956a3890721445dfb92d5b27b40e3c92
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760406687382
+status: 3
+tags: []
+user_id: Rajashekhar

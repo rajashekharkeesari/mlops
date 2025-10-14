@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/405779710183271152/dc41a402111347789c1d59c4a589f0fe/artifacts
+end_time: 1760060351032
+entry_point_name: ''
+experiment_id: '405779710183271152'
+lifecycle_stage: active
+run_id: dc41a402111347789c1d59c4a589f0fe
+run_name: dazzling-chimp-630
+run_uuid: dc41a402111347789c1d59c4a589f0fe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760060340804
+status: 3
+tags: []
+user_id: Rajashekhar

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/405779710183271152/1d2636a0b41b488b9fcec5a0b139e8bf/artifacts
+end_time: 1760057573706
+entry_point_name: ''
+experiment_id: '405779710183271152'
+lifecycle_stage: active
+run_id: 1d2636a0b41b488b9fcec5a0b139e8bf
+run_name: thundering-bee-881
+run_uuid: 1d2636a0b41b488b9fcec5a0b139e8bf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760057559845
+status: 3
+tags: []
+user_id: Rajashekhar

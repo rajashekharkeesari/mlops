@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/405779710183271152/03e4a2c3100044358e742f288fa9c73a/artifacts
+end_time: 1760060523807
+entry_point_name: ''
+experiment_id: '405779710183271152'
+lifecycle_stage: active
+run_id: 03e4a2c3100044358e742f288fa9c73a
+run_name: luxuriant-gnat-37
+run_uuid: 03e4a2c3100044358e742f288fa9c73a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760060512003
+status: 3
+tags: []
+user_id: Rajashekhar

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/405779710183271152/8df3801482db4640a2094bf440683170/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '405779710183271152'
+lifecycle_stage: active
+run_id: 8df3801482db4640a2094bf440683170
+run_name: treasured-ram-181
+run_uuid: 8df3801482db4640a2094bf440683170
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760059985423
+status: 1
+tags: []
+user_id: Rajashekhar
