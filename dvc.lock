@@ -41,8 +41,8 @@ stages:
       size: 16882
     - path: src/model.py
       hash: md5
-      md5: 8b92b13e27722efb2e2b251141062258
-      size: 1400
+      md5: 51cbc29e6af9ee43837ff409597f0250
+      size: 1401
     params:
       params.yaml:
         model.max_depth: 9
@@ -73,19 +73,19 @@ stages:
     deps:
     - path: data/processed/x_test.csv
       hash: md5
-      md5: 14ca0fb7b227a2d5eff18ede19452295
-      size: 397259
+      md5: 227285714d308e7b5f3f7b62192c5afc
+      size: 397202
     - path: data/processed/x_train.csv
       hash: md5
-      md5: bf0f34ea04c472a9298980f7d84f6a23
-      size: 1585131
+      md5: 1144bdbde0fe14bbc8b23744ba7498d1
+      size: 1585188
     - path: data/processed/y_test.csv
       hash: md5
-      md5: a83150b6a865075c896fc966ed2edab3
+      md5: 7c1a87d9c19cf96be47006e337cc4770
       size: 4228
     - path: data/processed/y_train.csv
       hash: md5
-      md5: bc5ff877c512562dec7f085d66a23258
+      md5: 891439e72edaf58e163bbf6900794054
       size: 16882
     - path: data/tel_churn.csv
       hash: md5
@@ -93,8 +93,8 @@ stages:
       size: 2029448
     - path: model/model_dt.pkl
       hash: md5
-      md5: d3356e859e9991c72801efe7730ffb19
-      size: 48457
+      md5: 9c4332312c8c578f693f9fca104e8677
+      size: 47977
     - path: src/main.py
       hash: md5
       md5: 20315084819dbfa3e2c74b780d6096df

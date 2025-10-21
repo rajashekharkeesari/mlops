@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/808654910193518729/667940985a654dcfbe5304e65e0c61ad/artifacts
+end_time: 1760932611640
+entry_point_name: ''
+experiment_id: '808654910193518729'
+lifecycle_stage: active
+run_id: 667940985a654dcfbe5304e65e0c61ad
+run_name: omniscient-shrew-663
+run_uuid: 667940985a654dcfbe5304e65e0c61ad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760932605124
+status: 3
+tags: []
+user_id: Rajashekhar

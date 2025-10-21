@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/845404447376709469/2f47365a336e445a9009f652feaf4dde/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '845404447376709469'
+lifecycle_stage: active
+run_id: 2f47365a336e445a9009f652feaf4dde
+run_name: upbeat-grub-787
+run_uuid: 2f47365a336e445a9009f652feaf4dde
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760935078742
+status: 1
+tags: []
+user_id: Rajashekhar
