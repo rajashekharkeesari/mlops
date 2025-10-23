@@ -17,7 +17,7 @@ jobs:
       EC2_HOST: ${{ secrets.EC2_HOST }}   # Your EC2 public IP stored as GitHub Secret
 
     steps:
-      # -------------------------
+      # ----------------------
       # Checkout code
       # -------------------------
       - name: Checkout repository
