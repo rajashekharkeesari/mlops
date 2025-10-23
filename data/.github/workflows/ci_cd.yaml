@@ -1,0 +1,85 @@
+name: CI/CD Churn Prediction
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      AWS_REGION: ap-south-1
+      ECR_REPOSITORY: churn_prediction
+      IMAGE_TAG: latest
+      EC2_USER: ubuntu
+      EC2_HOST: ${{ secrets.EC2_HOST }}   # Your EC2 public IP stored as GitHub Secret
+
+    steps:
+      # -------------------------
+      # Checkout code
+      # -------------------------
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # -------------------------
+      # Configure AWS credentials securely
+      # -------------------------
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # -------------------------
+      # Login to ECR
+      # -------------------------
+      - name: Login to Amazon ECR
+        id: ecr-login
+        run: |
+          aws ecr get-login-password --region $AWS_REGION | \
+            docker login --username AWS --password-stdin 479650865906.dkr.ecr.$AWS_REGION.amazonaws.com
+
+      # -------------------------
+      # Build Docker image
+      # -------------------------
+      - name: Build Docker image
+        run: |
+          docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
+
+      # -------------------------
+      # Tag Docker image for ECR
+      # -------------------------
+      - name: Tag Docker image
+        run: |
+          docker tag $ECR_REPOSITORY:$IMAGE_TAG 479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
+
+      # -------------------------
+      # Push Docker image to ECR
+      # -------------------------
+      - name: Push Docker image to ECR
+        run: |
+          docker push 479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
+
+      # -------------------------
+      # Deploy on EC2 securely using SSH key
+      # -------------------------
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ env.EC2_HOST }}
+          username: ${{ env.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            # Stop any running container
+            docker ps -q --filter "ancestor=479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY" | xargs -r docker stop
+            
+            # Pull the latest Docker image
+            docker pull 479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
+
+            # Run container with Flask + MLflow
+            docker run -d -p 8080:8080 -p 5000:5000 \
+              479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG \
+              bash -c "mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri /app/mlruns --default-artifact-root /app/mlruns & python /app/src/app.py"
