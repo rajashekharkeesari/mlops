@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/datascience_projects/MLProject-ChurnPrediction/mlruns/808654910193518729/7b738c46ff98456b92e6425acf442569/artifacts
+end_time: 1761032795238
+entry_point_name: ''
+experiment_id: '808654910193518729'
+lifecycle_stage: active
+run_id: 7b738c46ff98456b92e6425acf442569
+run_name: honorable-toad-67
+run_uuid: 7b738c46ff98456b92e6425acf442569
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1761032777090
+status: 3
+tags: []
+user_id: Rajashekhar

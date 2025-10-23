@@ -2,3 +2,4 @@
     remote = myremote
 ['remote "myremote"']
     url = s3://dvcpipeline1
+    region = ap-south-1

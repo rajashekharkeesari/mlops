@@ -9,21 +9,27 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # -------------------------
+# Install system dependencies
+# -------------------------
+RUN apt-get update && \
+    apt-get install -y git curl dos2unix && \
+    rm -rf /var/lib/apt/lists/*
+
+# -------------------------
 # Copy project files
 # -------------------------
 COPY . .
 
 # -------------------------
-# Install system dependencies
+# Convert entrypoint to Unix and make executable
 # -------------------------
-RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+RUN dos2unix /app/entrypoint.sh && chmod +x /app/entrypoint.sh
 
 # -------------------------
 # Install Python dependencies
 # -------------------------
-RUN pip install --no-cache-dir --default-timeout=100 -r requirements.txt
-RUN pip install --no-cache-dir --default-timeout=100 dvc[all] mlflow
-
+RUN pip install --no-cache-dir --default-timeout=100 -r requirements.txt && \
+    pip install --no-cache-dir --default-timeout=100 dvc[all] mlflow
 
 # -------------------------
 # Expose Flask port
@@ -31,9 +37,6 @@ RUN pip install --no-cache-dir --default-timeout=100 dvc[all] mlflow
 EXPOSE 8080
 
 # -------------------------
-# Entrypoint script
+# Entrypoint
 # -------------------------
-COPY entrypoint.sh /app/entrypoint.sh
-RUN chmod +x /app/entrypoint.sh
-
-CMD ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
