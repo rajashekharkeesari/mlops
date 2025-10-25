@@ -66,6 +66,10 @@ jobs:
           script: |
             echo "=== ✅ Connected to EC2 ==="
 
+            echo "Logging into AWS ECR..."
+            aws ecr get-login-password --region ${{ env.AWS_REGION }} | \
+              docker login --username AWS --password-stdin ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
+
             echo "Stopping existing containers..."
             docker ps -q --filter "ancestor=${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}" | xargs -r docker stop || true
 
