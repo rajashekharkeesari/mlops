@@ -13,4 +13,4 @@ mlflow server --host 0.0.0.0 --port 5000 \
   --default-artifact-root /app/mlruns &
 
 echo "Starting Flask API..."
-exec python /app/src/app.py
+exec python /app/app.py
