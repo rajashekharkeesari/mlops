@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-#join
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -14,17 +14,18 @@ jobs:
       ECR_REPOSITORY: churn_prediction
       IMAGE_TAG: latest
       EC2_USER: ubuntu
-      EC2_HOST: ${{ secrets.EC2_HOST }}   # Your EC2 public IP stored as GitHub Secret
+      EC2_HOST: ${{ secrets.EC2_HOST }}
+      AWS_ACCOUNT_ID: 479650865906
 
     steps:
-      # ----------------------
+      # -------------------------
       # Checkout code
       # -------------------------
       - name: Checkout repository
         uses: actions/checkout@v3
 
       # -------------------------
-      # Configure AWS credentials securely
+      # Configure AWS credentials
       # -------------------------
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -34,37 +35,24 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       # -------------------------
-      # Login to ECR
+      # Login to Amazon ECR
       # -------------------------
       - name: Login to Amazon ECR
-        id: ecr-login
         run: |
           aws ecr get-login-password --region $AWS_REGION | \
-            docker login --username AWS --password-stdin 479650865906.dkr.ecr.$AWS_REGION.amazonaws.com
+            docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
 
       # -------------------------
-      # Build Docker image
+      # Build, Tag, Push Docker Image
       # -------------------------
-      - name: Build Docker image
+      - name: Build, Tag and Push Image
         run: |
           docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
+          docker tag $ECR_REPOSITORY:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
 
       # -------------------------
-      # Tag Docker image for ECR
-      # -------------------------
-      - name: Tag Docker image
-        run: |
-          docker tag $ECR_REPOSITORY:$IMAGE_TAG 479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
-
-      # -------------------------
-      # Push Docker image to ECR
-      # -------------------------
-      - name: Push Docker image to ECR
-        run: |
-          docker push 479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
-
-      # -------------------------
-      # Deploy on EC2 securely using SSH key
+      # Deploy to EC2
       # -------------------------
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v0.1.7
@@ -72,14 +60,26 @@ jobs:
           host: ${{ env.EC2_HOST }}
           username: ${{ env.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
+          port: 22
+          script_stop: true
+          debug: true
           script: |
-            # Stop any running container
-            docker ps -q --filter "ancestor=479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY" | xargs -r docker stop
+            echo "=== Connected to EC2 ==="
+            echo "Stopping existing containers..."
+            docker ps -q --filter "ancestor=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY" | xargs -r docker stop || true
             
-            # Pull the latest Docker image
-            docker pull 479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
+            echo "Pulling latest image..."
+            docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
 
-            # Run container with Flask + MLflow
-            docker run -d -p 8080:8080 -p 5000:5000 \
-              479650865906.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG \
+            echo "Removing old containers..."
+            docker container prune -f || true
+
+            echo "Starting new container..."
+            docker run -d \
+              --name churn_app \
+              -p 8080:8080 -p 5000:5000 \
+              $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG \
               bash -c "mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri /app/mlruns --default-artifact-root /app/mlruns & python /app/src/app.py"
+
+            echo "Deployment complete!"
+            docker ps
