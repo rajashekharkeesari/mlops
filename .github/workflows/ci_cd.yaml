@@ -64,12 +64,13 @@ jobs:
           script_stop: true
           debug: true
           script: |
-            echo "=== Connected to EC2 ==="
+            echo "=== ✅ Connected to EC2 ==="
+
             echo "Stopping existing containers..."
-            docker ps -q --filter "ancestor=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY" | xargs -r docker stop || true
-            
+            docker ps -q --filter "ancestor=${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}" | xargs -r docker stop || true
+
             echo "Pulling latest image..."
-            docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG
+            docker pull ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
 
             echo "Removing old containers..."
             docker container prune -f || true
@@ -78,7 +79,7 @@ jobs:
             docker run -d \
               --name churn_app \
               -p 8080:8080 -p 5000:5000 \
-              $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG \
+              ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} \
               bash -c "mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri /app/mlruns --default-artifact-root /app/mlruns & python /app/src/app.py"
 
             echo "Deployment complete!"
